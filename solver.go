@@ -29,11 +29,9 @@ func solve(matrix [][]int, max_task bool) [][]int {
 		fmt.Println("k=", k, "n=", n)
 
 		fmt.Println("Матрица:")
-		show(matrix, n)
+		showSelections(matrix, sel)
 		fmt.Println("Текущая СНН:")
-		showSIZ(siz, n)
-		fmt.Print("Выделения: ")
-		fmt.Println(sel)
+		showSIZ(siz)
 
 		if hasUnselectedZeroes(matrix, sel) {
 			fmt.Println("Есть невыделенные нули")
@@ -173,13 +171,12 @@ func processUnselectedZeroes(matrix [][]int, sel *[]selection, siz [][]int, k in
 			}
 			if matrix[i][j] == 0 {
 				siz[i][j] = 2
-				showSIZ(siz, size)
+				showSIZ(siz)
 				if col := getZeroStar(i, siz); col != -1 {
 					*sel = deleteColSelection(*sel, col)
 					*sel = setRowSelection(*sel, i)
 
-					fmt.Print("Выделения: ")
-					fmt.Println(*sel)
+					showSelections(matrix, *sel)
 				} else {
 					fmt.Println("Строим L-цепочку c позиции", i, j)
 					lChain := make([][2]int, 0)

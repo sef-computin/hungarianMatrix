@@ -3,16 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	size, matrixp := input(false)
+	_, matrixp := input(true)
 	matrix := *matrixp
 	fmt.Println("Изначальная матрица стоимостей")
-	show(matrix, size)
+	showMatrix(matrix)
 
 	prepare(matrix)
 	fmt.Println("Приведенная матрица:")
-	show(matrix, size)
+	showMatrix(matrix)
 
 	ans := solve(matrix, false)
 	fmt.Println("Финальная СНН:")
-	showAnswer(ans, size)
+	showAnswer(ans)
 }
